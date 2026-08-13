@@ -1,0 +1,9 @@
+---
+import { siteConfig } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="border-t-2 border-divider">
+  <div class="px-6 py-8 sm:px-14">
+    <p class="muted text-sm">© {year} {siteConfig.name}</p>
+  </div>
+</footer>

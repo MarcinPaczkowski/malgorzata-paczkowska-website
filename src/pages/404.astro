@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Nie znaleziono strony — 404">
+  <section>
+    <div class="flex min-h-[60vh] flex-col justify-center gap-5 px-6 py-20 sm:px-14">
+      <p class="kicker">Błąd 404</p>
+      <h1 class="max-w-[20ch] text-[32px] leading-[1.1] tracking-[-0.02em] sm:text-[44px]">
+        Taka strona nie istnieje
+      </h1>
+      <p class="muted max-w-[50ch] text-base">Możliwe, że link jest nieaktualny lub adres wpisany z błędem.</p>
+      <div>
+        <a class="btn btn-primary" href="/">Wróć na stronę główną</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

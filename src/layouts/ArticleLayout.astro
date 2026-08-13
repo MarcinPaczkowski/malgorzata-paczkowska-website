@@ -1,0 +1,41 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const date = post.data.pubDate.toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+const tag = post.data.tags[0] ?? '';
+---
+<BaseLayout title={`${post.data.title} — blog`} description={post.data.description} type="article">
+  <section class="border-b-2 border-divider">
+    <div class="mx-auto max-w-[1280px] px-6 py-5 sm:px-14">
+      <a href="/blog" class="muted text-sm no-underline hover:text-accent-700">← Wróć do bloga</a>
+    </div>
+  </section>
+
+  <section class="border-b-2 border-divider">
+    <div class="mx-auto max-w-[1280px] px-6 py-12 sm:px-14 sm:py-16">
+      <div class="muted mb-4 text-xs uppercase tracking-[0.1em]">
+        {date}{tag ? ` · ${tag}` : ''}
+      </div>
+      <h1 class="max-w-[24ch] text-[32px] leading-[1.1] tracking-[-0.02em] sm:text-[44px]">
+        {post.data.title}
+      </h1>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-[1280px] px-6 py-12 sm:px-14 sm:py-16">
+      <div class="article text-base">
+        <slot />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

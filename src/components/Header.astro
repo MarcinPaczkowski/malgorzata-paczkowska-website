@@ -1,0 +1,41 @@
+---
+import { siteConfig } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<header
+  id="site-header"
+  class="sticky top-0 z-50 border-b-2 border-divider bg-canvas transition-[box-shadow] duration-200"
+>
+  <div class="flex items-center justify-between gap-8 px-6 py-5 sm:px-14">
+    <a href="/" class="text-[17px] font-extrabold tracking-[-0.02em] text-ink no-underline">
+      {siteConfig.name}
+    </a>
+    <nav aria-label="Główna nawigacja" class="hidden items-center gap-7 text-sm font-medium md:flex">
+      {siteConfig.nav.map((item) => {
+        const itemPath = item.href.replace(/\/$/, '') || '/';
+        const active = itemPath === '/' ? path === '/' : path.startsWith(itemPath);
+        return (
+          <a
+            href={item.href}
+            aria-current={active ? 'page' : undefined}
+            class={`no-underline pb-1 ${active ? 'border-b-2 border-accent text-accent-700' : 'text-ink hover:text-accent-700'}`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+    <a class="btn btn-primary" href="/kontakt">Umów wizytę</a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 0);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

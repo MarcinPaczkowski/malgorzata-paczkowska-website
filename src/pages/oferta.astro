@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../data/site";
+const o = siteConfig.offer;
+const c = siteConfig.contact.info;
+---
+
+<BaseLayout title={`Oferta — ${siteConfig.name}`} description={o.lead}>
+  {/* Nagłówek */}
+  <section class="border-b-2 border-divider">
+    <div class="px-6 py-16 sm:px-14">
+      <p class="kicker mb-5">{o.kicker}</p>
+      <h1
+        class="mb-5 max-w-[20ch] text-[36px] leading-[1.06] tracking-[-0.03em] sm:text-[48px]"
+      >
+        {o.h1}
+      </h1>
+      <p class="muted max-w-[60ch] text-base leading-[1.6]">{o.lead}</p>
+    </div>
+  </section>
+
+  {/* Siatka usług — pełna szerokość */}
+  <section>
+    <div class="grid grid-cols-1 gap-[1px] bg-divider sm:grid-cols-2">
+      {
+        o.services.map((s) => (
+          <div class="flex gap-[18px] bg-canvas p-7 sm:p-9">
+            <span class="kicker pt-1">{s.num}</span>
+            <div>
+              <h3 class="mb-1.5 text-[19px]">{s.title}</h3>
+              <p class="muted text-sm leading-[1.55]">{s.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* Pierwsza wizyta — FAQ */}
+  <section class="border-t-2 border-divider">
+    <div
+      class="grid grid-cols-1 gap-12 px-6 py-16 sm:px-14 md:grid-cols-[1fr_1.3fr]"
+    >
+      <h2
+        class="max-w-[20ch] text-[26px] leading-[1.1] tracking-[-0.02em] sm:text-[32px]"
+      >
+        {o.firstVisitTitle}
+      </h2>
+      <div>
+        {
+          o.faq.map((item, i) => (
+            <div
+              class={`py-5 ${i === 0 ? "border-t-2" : "border-t"} ${i === o.faq.length - 1 ? "border-b-2" : ""} border-divider`}
+            >
+              <h3 class="mb-1.5 text-[17px]">{item.q}</h3>
+              <p class="muted text-[15px] leading-[1.55]">{item.a}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Baner CTA — pełna szerokość */}
+  <section class="bg-accent text-canvas">
+    <div
+      class="flex flex-col items-start justify-between gap-6 px-6 py-14 sm:px-14 md:flex-row md:items-center"
+    >
+      <h2 class="text-[24px] tracking-[-0.02em] text-canvas sm:text-[28px]">
+        {o.bannerTitle}
+      </h2>
+      <a
+        class="btn shrink-0 bg-canvas text-accent-800 no-underline hover:bg-canvas/90"
+        href={`tel:${c.phoneHref}`}>{c.phone}</a
+      >
+    </div>
+  </section>
+</BaseLayout>

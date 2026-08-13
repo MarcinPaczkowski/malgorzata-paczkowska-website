@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { siteConfig } from '../../data/site';
+import { getCollection } from 'astro:content';
+import { getSortedPosts } from '../../utils/posts';
+const b = siteConfig.blog;
+const posts = getSortedPosts(await getCollection('blog'));
+---
+<BaseLayout title={`Blog — ${siteConfig.name}`} description={b.lead}>
+  {/* Nagłówek */}
+  <section class="border-b-2 border-divider">
+    <div class="px-6 py-16 sm:px-14">
+      <p class="kicker mb-5">{b.kicker}</p>
+      <h1 class="mb-4 max-w-[18ch] text-[36px] leading-[1.06] tracking-[-0.03em] sm:text-[48px]">{b.h1}</h1>
+      <p class="muted max-w-[60ch] text-base">{b.lead}</p>
+    </div>
+  </section>
+
+  {/* Siatka wpisów — bez dividerów, sam animowany pasek nad wpisem */}
+  <section>
+    <div class="grid grid-cols-1 gap-x-8 gap-y-12 px-6 py-16 sm:grid-cols-2 sm:px-14 lg:grid-cols-3">
+      {posts.map((p) => (
+        <ArticleCard post={p} readMore />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

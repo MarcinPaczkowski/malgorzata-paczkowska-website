@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+const a = siteConfig.about;
+---
+<BaseLayout title={`O mnie — ${siteConfig.name}`} description={a.lead}>
+  {/* Hero */}
+  <section class="border-b-2 border-divider">
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      <div class="flex flex-col justify-center px-6 py-16 sm:px-14 lg:py-20">
+        <p class="kicker mb-5">{a.kicker}</p>
+        <h1 class="mb-6 max-w-[15ch] text-[36px] leading-[1.06] tracking-[-0.03em] sm:text-[48px]">
+          {a.h1}
+        </h1>
+        <p class="muted max-w-[46ch] text-[17px] leading-[1.6]">{a.lead}</p>
+      </div>
+      <div class="border-t-2 border-divider lg:border-l-2 lg:border-t-0">
+        <div class="slot h-full min-h-[360px] lg:min-h-[440px]">{a.heroImageLabel}</div>
+      </div>
+    </div>
+  </section>
+
+  {/* Treść biogramu */}
+  <section class="border-b-2 border-divider">
+    <div class="px-6 py-16 sm:px-14">
+      {a.body.map((p) => (
+        <p class="mb-4 max-w-[70ch] text-base leading-[1.7]">{p}</p>
+      ))}
+      <p class="muted max-w-[70ch] text-base leading-[1.7]">{a.bodyMuted}</p>
+    </div>
+  </section>
+
+  {/* Wykształcenie i praktyka */}
+  <section class="border-b-2 border-divider">
+    <div class="px-6 pt-14 sm:px-14">
+      <h2 class="mb-8 text-[22px] tracking-[-0.02em] sm:text-[26px]">{a.educationTitle}</h2>
+    </div>
+    <div class="grid grid-cols-1 gap-[2px] border-t-2 border-divider bg-divider bg-clip-content sm:grid-cols-2 lg:grid-cols-4">
+      {a.education.map((e) => (
+        <div class="bg-canvas p-7 sm:p-8">
+          <strong class="mb-1.5 block font-semibold">{e.title}</strong>
+          <span class="muted text-sm">{e.detail}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section>
+    <div class="flex flex-col items-start justify-between gap-6 px-6 py-16 sm:px-14 md:flex-row md:items-center">
+      <div>
+        <h2 class="mb-2.5 text-[24px] tracking-[-0.02em] sm:text-[28px]">{a.ctaTitle}</h2>
+        <p class="muted">{a.ctaBody}</p>
+      </div>
+      <a class="btn btn-primary shrink-0" href={a.ctaButton.href}>{a.ctaButton.label}</a>
+    </div>
+  </section>
+</BaseLayout>

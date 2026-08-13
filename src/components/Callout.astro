@@ -1,0 +1,14 @@
+---
+interface Props {
+  type?: 'tip' | 'note' | 'warning';
+}
+const { type = 'note' } = Astro.props;
+const styles: Record<string, string> = {
+  tip: 'border-accent bg-accent-100 text-accent-900',
+  note: 'border-divider bg-surface text-ink',
+  warning: 'border-accent-700 bg-accent-200 text-accent-900',
+};
+---
+<aside class={`my-6 border-l-2 p-4 text-sm leading-[1.6] ${styles[type]}`}>
+  <slot />
+</aside>

@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  readMore?: boolean;
+}
+
+const { post, readMore = false } = Astro.props;
+
+const date = post.data.pubDate.toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+const tag = post.data.tags[0] ?? '';
+---
+<a
+  href={`/blog/${post.id}/`}
+  class="group block no-underline text-ink"
+>
+  <div class="mb-4 h-0.5 w-full bg-accent transition-[width] duration-300 ease-out group-hover:w-12"></div>
+  <div class="muted mb-2.5 text-xs uppercase tracking-[0.1em]">
+    {date}{tag ? ` · ${tag}` : ''}
+  </div>
+  <h3 class="mb-2 text-xl leading-[1.2]">{post.data.title}</h3>
+  <p class="muted text-sm leading-[1.55]">{post.data.description}</p>
+  {readMore && (
+    <span class="mt-4 block text-[13px] font-semibold text-accent-700">Czytaj →</span>
+  )}
+</a>
