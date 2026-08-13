@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../data/site';
+import { INDEXABLE } from '../utils/env';
 
 interface Props {
   title: string;
@@ -30,6 +31,7 @@ const personSchema = {
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
+{!INDEXABLE && <meta name="robots" content="noindex, nofollow" />}
 <link rel="canonical" href={canonical} />
 <meta property="og:type" content={type} />
 <meta property="og:title" content={title} />

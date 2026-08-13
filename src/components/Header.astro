@@ -1,5 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import { siteConfig } from '../data/site';
+// Pełnowymiarowy oryginał logo — astro:assets generuje z niego wariant
+// w rozmiarze nagłówka. Ikony w public/ powstają z tego samego pliku.
+import logo from '../assets/logo.png';
+
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 <header
@@ -7,7 +12,18 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   class="sticky top-0 z-50 border-b-2 border-divider bg-canvas transition-[box-shadow] duration-200"
 >
   <div class="flex items-center justify-between gap-8 px-6 py-5 sm:px-14">
-    <a href="/" class="text-[17px] font-extrabold tracking-[-0.02em] text-ink no-underline">
+    <a
+      href="/"
+      class="flex items-center gap-3 text-[17px] font-extrabold tracking-[-0.02em] text-ink no-underline"
+    >
+      <Image
+        src={logo}
+        alt=""
+        height={36}
+        densities={[1, 2]}
+        loading="eager"
+        class="h-9 w-auto shrink-0"
+      />
       {siteConfig.name}
     </a>
     <nav aria-label="Główna nawigacja" class="hidden items-center gap-7 text-sm font-medium md:flex">
