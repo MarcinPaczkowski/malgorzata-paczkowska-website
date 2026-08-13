@@ -1,7 +1,7 @@
 import { appendFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import type { AstroIntegration } from 'astro';
-import { INDEXABLE, missingBranchWarning } from '../utils/env';
+import { detectBranch, INDEXABLE, missingBranchWarning } from '../utils/env';
 
 // Blok reguł w składni `_headers` Cloudflare Pages: nagłówek dla wszystkich ścieżek.
 const NOINDEX_RULE = '/*\n  X-Robots-Tag: noindex, nofollow\n';
@@ -17,7 +17,14 @@ export function seoHeaders(): AstroIntegration {
     hooks: {
       'astro:config:setup': ({ logger }) => {
         const warning = missingBranchWarning(process.env);
-        if (warning) logger.warn(warning);
+        if (warning) {
+          logger.warn(warning);
+          return;
+        }
+        // Decyzja o indeksowaniu zapada cicho, więc wypisujemy ją do logu builda.
+        logger.info(
+          `Gałąź: ${detectBranch(process.env)} — ${INDEXABLE ? 'indeksowanie włączone' : 'noindex'}.`,
+        );
       },
 
       'astro:build:done': async ({ dir, logger }) => {

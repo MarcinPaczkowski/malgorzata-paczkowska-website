@@ -9,9 +9,10 @@ export const PRODUCTION_BRANCH = 'main';
 /** Zmienne z nazwą gałęzi, w kolejności pierwszeństwa. */
 const BRANCH_ENV_VARS = [
   'SITE_BRANCH', // ręczne nadpisanie — działa na każdym hostingu
+  'WORKERS_CI_BRANCH', // Cloudflare Workers Builds (nasz deploy)
+  'CF_PAGES_BRANCH', // Cloudflare Pages (starszy system buildów)
   'BRANCH', // Netlify
   'VERCEL_GIT_COMMIT_REF', // Vercel
-  'CF_PAGES_BRANCH', // Cloudflare Pages
   'GITHUB_REF_NAME', // GitHub Actions
 ] as const;
 

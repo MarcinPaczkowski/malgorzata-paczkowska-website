@@ -13,6 +13,10 @@ describe('detectBranch', () => {
   it('daje pierwszeństwo ręcznemu nadpisaniu', () => {
     expect(detectBranch({ SITE_BRANCH: 'main', BRANCH: 'develop' })).toBe('main');
   });
+
+  it('czyta gałąź z Cloudflare Workers Builds', () => {
+    expect(detectBranch({ WORKERS_CI_BRANCH: 'main' })).toBe('main');
+  });
 });
 
 describe('isIndexable', () => {
