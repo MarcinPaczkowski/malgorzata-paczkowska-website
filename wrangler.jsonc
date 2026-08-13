@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // TODO(deploy): nazwa musi się zgadzać z Workerem w panelu Cloudflare.
+  "name": "gosia-psycholog",
+  "compatibility_date": "2026-08-13",
+  "assets": {
+    // Katalog wyjściowy `astro build`.
+    "directory": "./dist",
+    // Astro generuje statyczne 404.html — bez tego Cloudflare oddaje własną,
+    // surową stronę błędu zamiast naszej.
+    "not_found_handling": "404-page"
+  }
+}
