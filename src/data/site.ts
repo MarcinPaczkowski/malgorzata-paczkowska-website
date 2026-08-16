@@ -51,7 +51,6 @@ export interface SiteConfig {
     lead: string;
     primaryCta: { label: string; href: string };
     secondaryCta: { label: string; href: string };
-    heroImageLabel: string;
     stats: Stat[];
     aboutTeaser: { h2: string; body: string; link: { label: string; href: string } };
     offerSectionTitle: string;
@@ -66,7 +65,6 @@ export interface SiteConfig {
     kicker: string;
     h1: string;
     lead: string;
-    heroImageLabel: string;
     body: string[];
     bodyMuted: string;
     educationTitle: string;
@@ -122,15 +120,14 @@ export const siteConfig: SiteConfig = {
     lead: 'Psycholożka, pedagożka, edukatorka rodzicielska Pozytywnej Dyscypliny, trenerka TUS, psycholożka w trakcie szkolenia psychoterapeutycznego w nurcie CBT',
     primaryCta: { label: 'Umów pierwszą wizytę', href: '/kontakt' },
     secondaryCta: { label: 'Poznaj ofertę', href: '/oferta' },
-    heroImageLabel: 'Portret — zdjęcie psychologa',
     stats: [
-      { value: 'Wykształcenie', label: 'Psycholożka o specjalności klinicznej dzieci i dorosłych.\nPedagożka o specjalności interwencja kryzysowa oraz poradnictwo i pomoc psychopedagogiczna.\nFilozofka o specjalności komunikacja społeczna' },
+      { value: 'Wykształcenie', label: 'Psycholożka o specjalności klinicznej dzieci i dorosłych\nPedagożka o specjalności interwencja kryzysowa oraz poradnictwo i pomoc psychopedagogiczna\nFilozofka o specjalności komunikacja społeczna' },
       { value: 'Szkoła Psychoterapii', label: 'w trakcie całościowego szkolenia psychoterapeutycznego w nurcie poznawczo-behawioralnym (CBT) rekomendowanego przez PTTPB' },
-      { value: 'Certyfikaty i Kursy', label: 'Racjonalna Terapia Zachowań.\nTerapia Skoncentrowana na Rozwiązaniach – kurs podstawowy.\nPraktyk metody Kids’ Skills, Dam radę oraz I’m Proud of you. Trener TUS I i II stopień (dla dzieci, dorosłych i osób w spektrum autyzmu).\nCertyfikat Edukatora Rodzicielskiego Pozytywnej Dyscypliny. Profesjonalne wsparcie w żałobie' },
+      { value: 'Certyfikaty i Kursy', label: 'Racjonalna Terapia Zachowań\nTerapia Skoncentrowana na Rozwiązaniach – kurs podstawowy\nPraktyk metody Kids’ Skills: Dam radę oraz I’m Proud of you\nTrener TUS I i II stopień (dla dzieci, dorosłych i osób w spektrum autyzmu)\nCertyfikat Edukatora Rodzicielskiego Pozytywnej Dyscypliny\nProfesjonalne wsparcie w żałobie' },
     ],
     aboutTeaser: {
-      h2: 'Nie musisz mieć gotowej odpowiedzi, żeby przyjść',
-      body: 'Od dwunastu lat towarzyszę osobom, które mierzą się z lękiem, obniżonym nastrojem, kryzysem w związku albo wyczerpaniem po latach pracy ponad siły.',
+      h2: 'W pracy kieruję się Kodeksem Etyczno-Zawodowym Psychologa Polskiego Towarzystwa Psychologicznego oraz zasadami Evidence-Based Practice (EBP)',
+      body: 'Pomoc psychologiczna, której udzielam, opiera się na aktualnej wiedzy naukowej, standardach etycznych i rzetelności zawodowej. Zapewniam poufność oraz jasne i przejrzyste zasady współpracy.',
       link: { label: 'Poznaj moje podejście →', href: '/o-mnie' },
     },
     offerSectionTitle: 'Oferta',
@@ -151,20 +148,19 @@ export const siteConfig: SiteConfig = {
 
   about: {
     kicker: 'O mnie',
-    h1: 'Psycholożka i psychoterapeutka CBT',
-    lead: 'Nazywam się Małgorzata Paczkowska. Od dwunastu lat towarzyszę osobom dorosłym, parom i młodzieży w trudnych momentach — lęku, obniżonym nastroju, kryzysie w relacji i wypaleniu.',
-    heroImageLabel: 'Portret w gabinecie',
+    h1: 'Nazywam się Małgorzata Paczkowska',
+    lead: 'W pracy spotykam się z osobami, które doświadczają lęku, obniżonego nastroju, przeciążenia, kryzysów czy trudności w relacjach. W zależności od potrzeb korzystam z Terapii Skoncentrowanej na Rozwiązaniach, Racjonalnej Terapii Zachowania oraz z podejścia poznawczo-behawioralnego. Nie zakładam z góry jednego sposobu pracy. Najważniejsze jest dla mnie poznanie Twojej sytuacji i wspólne znalezienie tego, co może realnie pomóc.',
     body: [
-      'W gabinecie stawiam na konkret i na ciepło jednocześnie. Wspólnie nazywamy to, co się dzieje, a potem szukamy narzędzi, które realnie działają w Twoim życiu — nie w podręczniku.',
+      'W gabinecie ważne jest dla mnie, żeby oprócz zrozumienia tego, co się z Tobą dzieje, pojawiła się też realna zmiana. Nie zakładam, że istnieje jedno rozwiązanie dobre dla każdego. Wspólnie przyglądamy się Twojej sytuacji, szukamy tego, co podtrzymuje trudności. Dobieramy sposoby pracy, które mają sens właśnie dla Ciebie. Korzystam z podejścia poznawczo-behawioralnego, Racjonalnej Terapii Zachowania i Terapii Skoncentrowanej na Rozwiązaniach, ale przede wszystkim zależy mi na tym, żeby wiedza psychologiczna przekładała się na codzienne życie.',
     ],
     bodyMuted:
       'A prywatnie? Jestem miłośniczką gór i podróży samochodowych. W niespełna rok zdobyłam Koronę Gór Polski, a podczas licznych podróży odwiedziłam 36 krajów Europy. Jestem również wielką miłośniczką kotów. Życie poza gabinetem jest dla mnie równie ważne. To właśnie tam odpoczywam, nabieram perspektywy i czerpię energię do pracy z drugim człowiekiem.',
     educationTitle: 'Wykształcenie i praktyka',
     education: [
-      { title: 'Wykształcenie', detail: 'Psycholożka o specjalności klinicznej dzieci i dorosłych.\nPedagożka o specjalności interwencja kryzysowa oraz poradnictwo i pomoc psychopedagogiczna.\nFilozofka o specjalności komunikacja społeczna' },
+      { title: 'Wykształcenie', detail: 'Psycholożka o specjalności klinicznej dzieci i dorosłych\nPedagożka o specjalności interwencja kryzysowa oraz poradnictwo i pomoc psychopedagogiczna\nFilozofka o specjalności komunikacja społeczna' },
       { title: 'Szkoła Psychoterapii', detail: 'w trakcie całościowego szkolenia psychoterapeutycznego w nurcie poznawczo-behawioralnym (CBT), rekomendowanego przez PTTPB' },
       { title: 'Członkini', detail: 'Polskiego Towarzystwa Terapii Poznawczej i Behawioralnej (PTTPB)' },
-      { title: 'Doświadczenie', detail: 'Doświadczenie zawodowe zdobywałam w: Centrum Psychoterapii Sumus, Centrum Zdrowia Psychicznego HCP w Poznaniu, Szkoła Podstawowa nr 2 oraz Zespół Szkół nr 1 we Wrześni. ' },
+      { title: 'Doświadczenie', detail: 'Doświadczenie zawodowe zdobywałam w:\n Centrum Psychoterapii Sumus\nCentrum Zdrowia Psychicznego HCP w Poznaniu\nSzkołe Podstawowej nr 2 we Wrześni\nZespóle Szkół nr 1 we Wrześni ' },
     ],
     ctaTitle: 'Chcesz zacząć?',
     ctaBody: 'Pierwsza rozmowa nie zobowiązuje Cię do niczego więcej. To spokojny moment, żeby opowiedzieć z czym przychodzisz, zadać pytania i sprawdzić, czy ta forma pomocy jest dla Ciebie odpowiednia. Nie musisz mieć wszystkiego poukładanego ani wiedzieć dokładnie, czego potrzebujesz. Wystarczy, że czujesz, że chcesz coś zmienić albo po prostu potrzebujesz z kimś o tym porozmawiać. Napisz lub umów pierwszą rozmowę. Zobaczymy, od czego warto zacząć.',

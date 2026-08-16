@@ -1,31 +1,54 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import { siteConfig } from '../data/site';
-import { getCollection } from 'astro:content';
-import { getSortedPosts } from '../utils/posts';
+import { Image } from "astro:assets";
+import portret from "../assets/portret.jpg";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import { siteConfig } from "../data/site";
+import { getCollection } from "astro:content";
+import { getSortedPosts } from "../utils/posts";
 
 const home = siteConfig.home;
-const latest = getSortedPosts(await getCollection('blog')).slice(0, 3);
+const latest = getSortedPosts(await getCollection("blog")).slice(0, 3);
 const c = siteConfig.contact.info;
 ---
+
 <BaseLayout title={siteConfig.title}>
   {/* Hero — pełna szerokość, 2 kolumny */}
   <section class="border-b-2 border-divider">
-    <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr]">
-      <div class="flex flex-col justify-center px-6 py-16 sm:px-14 lg:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] min-h-[520px]">
+      <div class="flex flex-col justify-start px-6 py-16 sm:px-14">
         <h1 class="kicker mb-5 leading-normal">{home.kicker}</h1>
-        <p class="mb-6 max-w-[15ch] font-extrabold text-[40px] leading-[1.05] tracking-[-0.03em] sm:text-[56px]">
+        <p
+          class="mb-6 max-w-[15ch] font-extrabold text-[40px] leading-[1.05] tracking-[-0.03em] sm:text-[56px]"
+        >
           {home.title}
         </p>
-        <p class="muted mb-8 max-w-[46ch] whitespace-pre-line text-[17px] leading-[1.6]">{home.lead}</p>
+        <p
+          class="muted mb-8 max-w-[46ch] whitespace-pre-line text-[17px] leading-[1.6]"
+        >
+          {home.lead}
+        </p>
         <div class="flex flex-wrap gap-3">
-          <a class="btn btn-primary" href={home.primaryCta.href}>{home.primaryCta.label}</a>
-          <a class="btn btn-secondary" href={home.secondaryCta.href}>{home.secondaryCta.label}</a>
+          <a class="btn btn-primary" href={home.primaryCta.href}
+            >{home.primaryCta.label}</a
+          >
+          <a class="btn btn-secondary" href={home.secondaryCta.href}
+            >{home.secondaryCta.label}</a
+          >
         </div>
       </div>
-      <div class="border-t-2 border-divider lg:border-l-2 lg:border-t-0">
-        <div class="slot h-full min-h-[420px] lg:min-h-[520px]">{home.heroImageLabel}</div>
+      <div
+        class="relative min-h-[420px] border-t-2 border-divider lg:border-l-2 lg:border-t-0"
+      >
+        <Image
+          src={portret}
+          alt={siteConfig.name}
+          widths={[480, 768, 1280, 1920]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          loading="eager"
+          fetchpriority="high"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
       </div>
     </div>
   </section>
@@ -33,27 +56,41 @@ const c = siteConfig.contact.info;
   {/* Statystyki — pełna szerokość */}
   <section class="border-b-2 border-divider">
     <div class="grid grid-cols-1 gap-[2px] bg-divider sm:grid-cols-3">
-      {home.stats.map((s) => (
-        <div class="bg-canvas px-6 py-7 sm:px-14">
-          <div class="whitespace-pre-line text-[28px] font-extrabold leading-[1.15] tracking-[-0.02em] sm:text-[32px]">{s.value}</div>
-          <div class="muted whitespace-pre-line text-[13px]">{s.label}</div>
-        </div>
-      ))}
+      {
+        home.stats.map((s) => (
+          <div class="bg-canvas px-6 py-7 sm:px-14">
+            <div class="mb-2 whitespace-pre-line text-[28px] font-extrabold leading-[1.15] tracking-[-0.02em] sm:text-[32px]">
+              {s.value}
+            </div>
+            <div class="muted whitespace-pre-line text-[13px]">{s.label}</div>
+          </div>
+        ))
+      }
     </div>
   </section>
 
   {/* O mnie — teaser */}
   <section class="border-b-2 border-divider">
-    <div class="grid grid-cols-1 gap-12 px-6 py-16 sm:px-14 md:grid-cols-[1fr_1.3fr]">
+    <div
+      class="grid grid-cols-1 gap-12 px-6 py-16 sm:px-14 md:grid-cols-[1fr_1.3fr]"
+    >
       <div>
         <p class="kicker mb-4">O mnie</p>
-        <h2 class="max-w-[16ch] text-[26px] leading-[1.1] tracking-[-0.02em] sm:text-[34px]">
+        <h2 class="text-[26px] leading-[1.3] tracking-[-0.02em] sm:text-[20px]">
           {home.aboutTeaser.h2}
         </h2>
       </div>
       <div>
-        <p class="mb-5 max-w-[60ch] whitespace-pre-line text-base leading-[1.65]">{home.aboutTeaser.body}</p>
-        <a href={home.aboutTeaser.link.href} class="text-sm font-semibold text-accent-700">
+        <p class="kicker mb-4"></p>
+        <p
+          class="mb-5 max-w-[60ch] whitespace-pre-line text-base leading-[1.65]"
+        >
+          {home.aboutTeaser.body}
+        </p>
+        <a
+          href={home.aboutTeaser.link.href}
+          class="text-sm font-semibold text-accent-700"
+        >
           {home.aboutTeaser.link.label}
         </a>
       </div>
@@ -64,17 +101,29 @@ const c = siteConfig.contact.info;
   <section class="border-b-2 border-divider">
     <div class="px-6 pt-16 sm:px-14">
       <div class="mb-8 flex items-baseline justify-between gap-4">
-        <h2 class="text-[26px] leading-[1.1] tracking-[-0.02em] sm:text-[34px]">{home.offerSectionTitle}</h2>
-        <a href={home.offerSeeAll.href} class="shrink-0 text-sm font-semibold text-accent-700">{home.offerSeeAll.label}</a>
+        <h2 class="text-[26px] leading-[1.1] tracking-[-0.02em] sm:text-[34px]">
+          {home.offerSectionTitle}
+        </h2>
+        <a
+          href={home.offerSeeAll.href}
+          class="shrink-0 text-sm font-semibold text-accent-700"
+          >{home.offerSeeAll.label}</a
+        >
       </div>
     </div>
-    <div class="grid grid-cols-1 gap-[2px] border-t-2 border-divider bg-divider bg-clip-content sm:grid-cols-2 lg:grid-cols-4">
-      {home.homeServices.map((s) => (
-        <div class="bg-canvas p-7 sm:p-8">
-          <h3 class="mb-2 text-lg">{s.title}</h3>
-          <p class="muted whitespace-pre-line text-sm leading-[1.55]">{s.description}</p>
-        </div>
-      ))}
+    <div
+      class="grid grid-cols-1 gap-[2px] border-t-2 border-divider bg-divider bg-clip-content sm:grid-cols-2 lg:grid-cols-4"
+    >
+      {
+        home.homeServices.map((s) => (
+          <div class="bg-canvas p-7 sm:p-8">
+            <h3 class="mb-2 text-lg">{s.title}</h3>
+            <p class="muted whitespace-pre-line text-sm leading-[1.55]">
+              {s.description}
+            </p>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -82,8 +131,14 @@ const c = siteConfig.contact.info;
   <section class="border-b-2 border-divider">
     <div class="px-6 py-16 sm:px-14">
       <div class="mb-8 flex items-baseline justify-between gap-4">
-        <h2 class="text-[26px] leading-[1.1] tracking-[-0.02em] sm:text-[34px]">{home.blogSectionTitle}</h2>
-        <a href={home.blogSeeAll.href} class="shrink-0 text-sm font-semibold text-accent-700">{home.blogSeeAll.label}</a>
+        <h2 class="text-[26px] leading-[1.1] tracking-[-0.02em] sm:text-[34px]">
+          {home.blogSectionTitle}
+        </h2>
+        <a
+          href={home.blogSeeAll.href}
+          class="shrink-0 text-sm font-semibold text-accent-700"
+          >{home.blogSeeAll.label}</a
+        >
       </div>
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
         {latest.map((p) => <ArticleCard post={p} />)}
@@ -95,22 +150,40 @@ const c = siteConfig.contact.info;
   <section class="bg-accent text-canvas">
     <div class="grid grid-cols-1 md:grid-cols-2">
       <div class="px-6 py-16 sm:px-14">
-        <h2 class="mb-5 text-[32px] leading-[1.08] tracking-[-0.025em] text-canvas sm:text-[40px]">
+        <h2
+          class="mb-5 text-[32px] leading-[1.08] tracking-[-0.025em] text-canvas sm:text-[40px]"
+        >
           {home.banner.h2}
         </h2>
-        <p class="max-w-[38ch] whitespace-pre-line text-base leading-[1.6] text-canvas/85">{home.banner.lead}</p>
+        <p
+          class="max-w-[38ch] whitespace-pre-line text-base leading-[1.6] text-canvas/85"
+        >
+          {home.banner.lead}
+        </p>
       </div>
-      <div class="grid gap-5 px-6 py-16 text-base leading-[1.5] sm:px-14 md:border-l-2 md:border-canvas/30">
+      <div
+        class="grid gap-5 px-6 py-16 text-base leading-[1.5] sm:px-14 md:border-l-2 md:border-canvas/30"
+      >
         <div>
-          <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">Telefon</div>
-          <a href={`tel:${c.phoneHref}`} class="no-underline text-canvas">{c.phone}</a>
+          <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">
+            Telefon
+          </div>
+          <a href={`tel:${c.phoneHref}`} class="no-underline text-canvas"
+            >{c.phone}</a
+          >
         </div>
         <div>
-          <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">E-mail</div>
-          <a href={`mailto:${c.email}`} class="no-underline text-canvas">{c.email}</a>
+          <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">
+            E-mail
+          </div>
+          <a href={`mailto:${c.email}`} class="no-underline text-canvas"
+            >{c.email}</a
+          >
         </div>
         <div class="whitespace-pre-line">
-          <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">Gabinet</div>
+          <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">
+            Gabinet
+          </div>
           {c.address}<br />
           <span class="text-canvas/75">{c.hours}</span>
         </div>
