@@ -41,8 +41,44 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
         );
       })}
     </nav>
-    <a class="btn btn-primary" href="/kontakt">Umów wizytę</a>
+    <a class="btn btn-primary hidden md:inline-flex" href="/kontakt">Umów wizytę</a>
+
+    {/* Na mobile pasek jest wypełniony przez logo i nazwisko — CTA przenosi się
+        do rozwijanego menu, a tutaj zostaje sam przycisk. */}
+    <button
+      id="nav-toggle"
+      type="button"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      {/* 44×44 to minimalny cel dotykowy; ujemny margines cofa nadmiarową
+          szerokość, żeby kreski zostały wyrównane do krawędzi paska. */}
+      class="-mr-[11px] flex h-11 w-11 flex-col items-center justify-center gap-[4px] md:hidden"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
   </div>
+
+  <nav id="mobile-nav" aria-label="Główna nawigacja" hidden class="md:hidden">
+    {siteConfig.nav.map((item) => {
+      const itemPath = item.href.replace(/\/$/, '') || '/';
+      const active = itemPath === '/' ? path === '/' : path.startsWith(itemPath);
+      return (
+        <a
+          href={item.href}
+          aria-current={active ? 'page' : undefined}
+          class={`block border-t-2 border-divider px-6 py-4 text-base font-medium no-underline ${active ? 'text-accent-700' : 'text-ink'}`}
+        >
+          {item.label}
+        </a>
+      );
+    })}
+    <div class="border-t-2 border-divider px-6 py-5">
+      <a class="btn btn-primary w-full" href="/kontakt">Umów wizytę</a>
+    </div>
+  </nav>
 </header>
 
 <script>
@@ -53,5 +89,31 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('mobile-nav');
+  if (toggle && panel) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+    };
+
+    toggle.addEventListener('click', () => setOpen(panel.hidden));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Po przejściu na desktop panel znika przez `md:hidden`, ale stan trzeba
+    // zresetować — inaczej aria-expanded kłamie, a menu wraca otwarte po
+    // ponownym zwężeniu okna.
+    const desktop = window.matchMedia('(min-width: 768px)');
+    desktop.addEventListener('change', (event) => {
+      if (event.matches) setOpen(false);
+    });
   }
 </script>
