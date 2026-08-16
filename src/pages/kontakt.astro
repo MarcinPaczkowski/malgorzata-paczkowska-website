@@ -9,7 +9,7 @@ const c = k.info;
     <div class="px-6 py-16 sm:px-14">
       <p class="kicker mb-5">{k.kicker}</p>
       <h1 class="mb-6 max-w-[16ch] text-[32px] leading-[1.08] tracking-[-0.03em] sm:text-[44px]">{k.h1}</h1>
-      <p class="muted mb-8 max-w-[44ch] text-base leading-[1.6]">{k.lead}</p>
+      <p class="muted mb-8 whitespace-pre-line text-base leading-[1.6]">{k.lead}</p>
       <hr class="mb-8 h-0.5 border-0 bg-divider" />
       <div class="grid gap-6 text-base leading-[1.5] sm:grid-cols-3 sm:gap-8">
         <div>
@@ -20,7 +20,7 @@ const c = k.info;
           <div class="muted mb-1 text-xs uppercase tracking-[0.12em]">E-mail</div>
           <a href={`mailto:${c.email}`} class="no-underline text-ink">{c.email}</a>
         </div>
-        <div>
+        <div class="whitespace-pre-line">
           <div class="muted mb-1 text-xs uppercase tracking-[0.12em]">Gabinet</div>
           {c.address}<br />
           <span class="muted">{c.hours}</span>

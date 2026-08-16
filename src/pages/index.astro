@@ -14,11 +14,11 @@ const c = siteConfig.contact.info;
   <section class="border-b-2 border-divider">
     <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr]">
       <div class="flex flex-col justify-center px-6 py-16 sm:px-14 lg:py-20">
-        <p class="kicker mb-5">{home.kicker}</p>
-        <h1 class="mb-6 max-w-[15ch] text-[40px] leading-[1.05] tracking-[-0.03em] sm:text-[56px]">
-          {home.h1}
-        </h1>
-        <p class="muted mb-8 max-w-[46ch] text-[17px] leading-[1.6]">{home.lead}</p>
+        <h1 class="kicker mb-5 leading-normal">{home.kicker}</h1>
+        <p class="mb-6 max-w-[15ch] font-extrabold text-[40px] leading-[1.05] tracking-[-0.03em] sm:text-[56px]">
+          {home.title}
+        </p>
+        <p class="muted mb-8 max-w-[46ch] whitespace-pre-line text-[17px] leading-[1.6]">{home.lead}</p>
         <div class="flex flex-wrap gap-3">
           <a class="btn btn-primary" href={home.primaryCta.href}>{home.primaryCta.label}</a>
           <a class="btn btn-secondary" href={home.secondaryCta.href}>{home.secondaryCta.label}</a>
@@ -35,8 +35,8 @@ const c = siteConfig.contact.info;
     <div class="grid grid-cols-1 gap-[2px] bg-divider sm:grid-cols-3">
       {home.stats.map((s) => (
         <div class="bg-canvas px-6 py-7 sm:px-14">
-          <div class="text-[28px] font-extrabold tracking-[-0.02em] sm:text-[32px]">{s.value}</div>
-          <div class="muted text-[13px]">{s.label}</div>
+          <div class="whitespace-pre-line text-[28px] font-extrabold leading-[1.15] tracking-[-0.02em] sm:text-[32px]">{s.value}</div>
+          <div class="muted whitespace-pre-line text-[13px]">{s.label}</div>
         </div>
       ))}
     </div>
@@ -52,7 +52,7 @@ const c = siteConfig.contact.info;
         </h2>
       </div>
       <div>
-        <p class="mb-5 max-w-[60ch] text-base leading-[1.65]">{home.aboutTeaser.body}</p>
+        <p class="mb-5 max-w-[60ch] whitespace-pre-line text-base leading-[1.65]">{home.aboutTeaser.body}</p>
         <a href={home.aboutTeaser.link.href} class="text-sm font-semibold text-accent-700">
           {home.aboutTeaser.link.label}
         </a>
@@ -72,7 +72,7 @@ const c = siteConfig.contact.info;
       {home.homeServices.map((s) => (
         <div class="bg-canvas p-7 sm:p-8">
           <h3 class="mb-2 text-lg">{s.title}</h3>
-          <p class="muted text-sm leading-[1.55]">{s.description}</p>
+          <p class="muted whitespace-pre-line text-sm leading-[1.55]">{s.description}</p>
         </div>
       ))}
     </div>
@@ -98,7 +98,7 @@ const c = siteConfig.contact.info;
         <h2 class="mb-5 text-[32px] leading-[1.08] tracking-[-0.025em] text-canvas sm:text-[40px]">
           {home.banner.h2}
         </h2>
-        <p class="max-w-[38ch] text-base leading-[1.6] text-canvas/85">{home.banner.lead}</p>
+        <p class="max-w-[38ch] whitespace-pre-line text-base leading-[1.6] text-canvas/85">{home.banner.lead}</p>
       </div>
       <div class="grid gap-5 px-6 py-16 text-base leading-[1.5] sm:px-14 md:border-l-2 md:border-canvas/30">
         <div>
@@ -109,7 +109,7 @@ const c = siteConfig.contact.info;
           <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">E-mail</div>
           <a href={`mailto:${c.email}`} class="no-underline text-canvas">{c.email}</a>
         </div>
-        <div>
+        <div class="whitespace-pre-line">
           <div class="mb-1 text-xs uppercase tracking-[0.12em] text-canvas/70">Gabinet</div>
           {c.address}<br />
           <span class="text-canvas/75">{c.hours}</span>

@@ -15,7 +15,7 @@ const c = siteConfig.contact.info;
       >
         {o.h1}
       </h1>
-      <p class="muted max-w-[60ch] text-base leading-[1.6]">{o.lead}</p>
+      <p class="muted max-w-[60ch] whitespace-pre-line text-base leading-[1.6]">{o.lead}</p>
     </div>
   </section>
 
@@ -28,7 +28,7 @@ const c = siteConfig.contact.info;
             <span class="kicker pt-1">{s.num}</span>
             <div>
               <h3 class="mb-1.5 text-[19px]">{s.title}</h3>
-              <p class="muted text-sm leading-[1.55]">{s.description}</p>
+              <p class="muted whitespace-pre-line text-sm leading-[1.55]">{s.description}</p>
             </div>
           </div>
         ))
@@ -53,7 +53,7 @@ const c = siteConfig.contact.info;
               class={`py-5 ${i === 0 ? "border-t-2" : "border-t"} ${i === o.faq.length - 1 ? "border-b-2" : ""} border-divider`}
             >
               <h3 class="mb-1.5 text-[17px]">{item.q}</h3>
-              <p class="muted text-[15px] leading-[1.55]">{item.a}</p>
+              <p class="muted whitespace-pre-line text-[15px] leading-[1.55]">{item.a}</p>
             </div>
           ))
         }

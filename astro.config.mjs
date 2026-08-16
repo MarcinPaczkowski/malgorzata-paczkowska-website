@@ -2,7 +2,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { seoHeaders } from './src/integrations/seo-headers.ts';
 
@@ -43,24 +43,24 @@ export default defineConfig({
         const path = new URL(item.url).pathname;
 
         if (path === '/') {
-          return { ...item, changefreq: 'monthly', priority: 1.0 };
+          return { ...item, changefreq: ChangeFreqEnum.MONTHLY, priority: 1.0 };
         }
 
         const postSlug = path.match(/^\/blog\/(.+)\/$/)?.[1];
         if (postSlug) {
           return {
             ...item,
-            changefreq: 'yearly',
+            changefreq: ChangeFreqEnum.YEARLY,
             priority: 0.6,
             lastmod: postDates.get(postSlug),
           };
         }
 
         if (path === '/blog/') {
-          return { ...item, changefreq: 'weekly', priority: 0.7 };
+          return { ...item, changefreq: ChangeFreqEnum.WEEKLY, priority: 0.7 };
         }
 
-        return { ...item, changefreq: 'monthly', priority: 0.8 };
+        return { ...item, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.8 };
       },
     }),
   ],

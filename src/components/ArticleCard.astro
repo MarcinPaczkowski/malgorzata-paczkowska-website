@@ -24,7 +24,7 @@ const tag = post.data.tags[0] ?? '';
     {date}{tag ? ` · ${tag}` : ''}
   </div>
   <h3 class="mb-2 text-xl leading-[1.2]">{post.data.title}</h3>
-  <p class="muted text-sm leading-[1.55]">{post.data.description}</p>
+  <p class="muted whitespace-pre-line text-sm leading-[1.55]">{post.data.description}</p>
   {readMore && (
     <span class="mt-4 block text-[13px] font-semibold text-accent-700">Czytaj →</span>
   )}

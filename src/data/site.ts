@@ -47,7 +47,7 @@ export interface SiteConfig {
 
   home: {
     kicker: string;
-    h1: string;
+    title: string;
     lead: string;
     primaryCta: { label: string; href: string };
     secondaryCta: { label: string; href: string };
@@ -117,16 +117,16 @@ export const siteConfig: SiteConfig = {
   ],
 
   home: {
-    kicker: 'Psycholog · Psychoterapeuta CBT',
-    h1: 'Przestrzeń, w której można odetchnąć',
-    lead: 'Pracuję w nurcie poznawczo-behawioralnym z osobami dorosłymi, parami i młodzieżą. Spotykamy się w gabinecie w Warszawie albo online — tak, jak Ci wygodniej.',
+    kicker: 'Psycholog Małgorzata Paczkowska Poznań',
+    title: 'Przestrzeń, w której można odetchnąć',
+    lead: 'Psycholożka, pedagożka, edukatorka rodzicielska Pozytywnej Dyscypliny, trenerka TUS, psycholożka w trakcie szkolenia psychoterapeutycznego w nurcie CBT',
     primaryCta: { label: 'Umów pierwszą wizytę', href: '/kontakt' },
     secondaryCta: { label: 'Poznaj ofertę', href: '/oferta' },
     heroImageLabel: 'Portret — zdjęcie psychologa',
     stats: [
-      { value: '12 lat', label: 'praktyki klinicznej' },
-      { value: 'CBT', label: 'terapia poznawczo-behawioralna' },
-      { value: 'Online', label: 'i stacjonarnie w Warszawie' },
+      { value: 'Wykształcenie', label: 'Psycholożka o specjalności klinicznej dzieci i dorosłych.\nPedagożka o specjalności interwencja kryzysowa oraz poradnictwo i pomoc psychopedagogiczna.\nFilozofka o specjalności komunikacja społeczna' },
+      { value: 'Szkoła Psychoterapii', label: 'w trakcie całościowego szkolenia psychoterapeutycznego w nurcie poznawczo-behawioralnym (CBT) rekomendowanego przez PTTPB' },
+      { value: 'Certyfikaty i Kursy', label: 'Racjonalna Terapia Zachowań.\nTerapia Skoncentrowana na Rozwiązaniach – kurs podstawowy.\nPraktyk metody Kids’ Skills, Dam radę oraz I’m Proud of you. Trener TUS I i II stopień (dla dzieci, dorosłych i osób w spektrum autyzmu).\nCertyfikat Edukatora Rodzicielskiego Pozytywnej Dyscypliny. Profesjonalne wsparcie w żałobie' },
     ],
     aboutTeaser: {
       h2: 'Nie musisz mieć gotowej odpowiedzi, żeby przyjść',
@@ -158,16 +158,16 @@ export const siteConfig: SiteConfig = {
       'W gabinecie stawiam na konkret i na ciepło jednocześnie. Wspólnie nazywamy to, co się dzieje, a potem szukamy narzędzi, które realnie działają w Twoim życiu — nie w podręczniku.',
     ],
     bodyMuted:
-      'Pracuję w nurcie poznawczo-behawioralnym, ponieważ pozwala on szybko przejść od rozmowy do zmiany — bez tracenia z oczu tego, co dla Ciebie ważne.',
+      'A prywatnie? Jestem miłośniczką gór i podróży samochodowych. W niespełna rok zdobyłam Koronę Gór Polski, a podczas licznych podróży odwiedziłam 36 krajów Europy. Jestem również wielką miłośniczką kotów. Życie poza gabinetem jest dla mnie równie ważne. To właśnie tam odpoczywam, nabieram perspektywy i czerpię energię do pracy z drugim człowiekiem.',
     educationTitle: 'Wykształcenie i praktyka',
     education: [
-      { title: 'Uniwersytet SWPS', detail: 'Psychologia kliniczna, mgr' },
-      { title: 'Szkoła Terapii Poznawczo-Behawioralnej', detail: 'Certyfikat psychoterapeuty CBT' },
-      { title: 'PTTPB', detail: 'Członkini towarzystwa' },
-      { title: 'Superwizja', detail: 'Stała, u superwizora PTTPB' },
+      { title: 'Wykształcenie', detail: 'Psycholożka o specjalności klinicznej dzieci i dorosłych.\nPedagożka o specjalności interwencja kryzysowa oraz poradnictwo i pomoc psychopedagogiczna.\nFilozofka o specjalności komunikacja społeczna' },
+      { title: 'Szkoła Psychoterapii', detail: 'w trakcie całościowego szkolenia psychoterapeutycznego w nurcie poznawczo-behawioralnym (CBT), rekomendowanego przez PTTPB' },
+      { title: 'Członkini', detail: 'Polskiego Towarzystwa Terapii Poznawczej i Behawioralnej (PTTPB)' },
+      { title: 'Doświadczenie', detail: 'Doświadczenie zawodowe zdobywałam w: Centrum Psychoterapii Sumus, Centrum Zdrowia Psychicznego HCP w Poznaniu, Szkoła Podstawowa nr 2 oraz Zespół Szkół nr 1 we Wrześni. ' },
     ],
     ctaTitle: 'Chcesz zacząć?',
-    ctaBody: 'Pierwsza rozmowa nie zobowiązuje do niczego więcej.',
+    ctaBody: 'Pierwsza rozmowa nie zobowiązuje Cię do niczego więcej. To spokojny moment, żeby opowiedzieć z czym przychodzisz, zadać pytania i sprawdzić, czy ta forma pomocy jest dla Ciebie odpowiednia. Nie musisz mieć wszystkiego poukładanego ani wiedzieć dokładnie, czego potrzebujesz. Wystarczy, że czujesz, że chcesz coś zmienić albo po prostu potrzebujesz z kimś o tym porozmawiać. Napisz lub umów pierwszą rozmowę. Zobaczymy, od czego warto zacząć.',
     ctaButton: { label: 'Umów wizytę', href: '/kontakt' },
   },
 
@@ -187,9 +187,12 @@ export const siteConfig: SiteConfig = {
     ],
     firstVisitTitle: 'Pierwsza wizyta — jak to wygląda',
     faq: [
-      { q: 'Ile trwa spotkanie?', a: 'Pięćdziesiąt minut. Pierwsze spotkanie jest konsultacją.' },
-      { q: 'Czy muszę wiedzieć, o czym mówić?', a: 'Nie. Wystarczy, że przyjdziesz — pytania z mojej strony poprowadzą rozmowę.' },
-      { q: 'Ile trwa terapia?', a: 'Zwykle od kilkunastu do kilkudziesięciu spotkań — plan ustalamy wspólnie.' },
+      { q: 'Z czym można zgłosić się do psychologa?', a: 'Nie trzeba mieć konkretnej diagnozy ani jasno określonego problemu. Możesz zgłosić się z trudnościami emocjonalnymi, lękiem, obniżonym nastrojem, problemami w relacjach, kryzysem, trudnościami wychowawczymi lub po prostu z poczuciem, że trudno poradzić sobie z tym, co dzieje się w Twoim życiu.' },
+      { q: 'Czy na pierwsze spotkanie z psychologiem trzeba się jakoś przygotować?', a: 'Nie. Pierwsze spotkanie służy przede wszystkim poznaniu sytuacji i ustaleniu, czego potrzebujesz. Nie musisz wiedzieć, co dokładnie powiedzieć ani mieć gotowej historii swojego problemu.' },
+      { q: 'Ile trwa spotkanie?', a: 'Standardowa konsultacja trwa 50 minut. W przypadku pracy z dzieckiem forma i długość spotkania mogą być ustalane indywidualnie, zależnie od wieku i potrzeb.' },
+      { q: 'Czy jedna konsultacja wystarczy?', a: 'Czasem tak. Jedno spotkanie może wystarczyć, aby uporządkować sytuację lub ustalić dalsze kroki. Jeśli potrzebna jest dłuższa współpraca, wspólnie ustalamy jej formę i częstotliwość.' },
+      { q: 'Czy psycholog zachowuje poufność?', a: 'Tak. Poufność jest podstawą pracy psychologa. Jej granice wynikają z przepisów prawa oraz zasad etyki zawodowej. W przypadku pracy z osobami niepełnoletnimi zasady dotyczące przekazywania informacji rodzicom omawiam na początku współpracy.' },
+      { q: 'Jak umówić pierwsze spotkanie?', a: 'Napisz lub zadzwoń, korzystając z danych kontaktowych dostępnych na stronie. Ustalimy dogodny termin i krótko porozmawiamy o tym, z czym się zgłaszasz.' }
     ],
     bannerTitle: 'Umów pierwszą konsultację',
   },
@@ -203,13 +206,13 @@ export const siteConfig: SiteConfig = {
   contact: {
     kicker: 'Kontakt',
     h1: 'Napisz albo zadzwoń',
-    lead: 'Odpowiadam w ciągu jednego dnia roboczego. Jeśli nie odbieram, jestem na sesji — oddzwonię.',
+    lead: 'Jeśli zastanawiasz się czy to dobry moment, żeby poprosić o wsparcie, możesz po prostu się odezwać. Nie musisz od razu wiedzieć, czego potrzebujesz ani dokładnie opisywać swojej sytuacji. Wystarczy krótka wiadomość lub telefon. Na wiadomości odpowiadam w ciągu jednego dnia roboczego. Jeśli dzwonisz i nie odbieram, najprawdopodobniej jestem właśnie na spotkaniu z drugą osobą. Oddzwonię, gdy tylko będę mogła spokojnie porozmawiać. Możesz napisać, zadzwonić lub skorzystać z formularza kontaktowego. Wspólnie ustalimy dogodny termin pierwszej konsultacji.',
     info: {
-      phone: '601 234 567',          // TODO(content)
-      phoneHref: '+48601234567',
-      email: 'kontakt@paczkowska-psycholog.pl', // TODO(content)
-      address: 'ul. Hoża 42 lok. 7, 00-516 Warszawa',
-      hours: 'wtorki i czwartki 10:00–19:00',
+      phone: '515 286 790',
+      phoneHref: '+48515286790',
+      email: 'gosiapaczkowska@outlook.com',
+      address: 'Poznań',
+      hours: 'Sobota: 10:00–14:00',
     },
     formNote: 'Formularz nie jest dostępny — proszę o kontakt telefoniczny lub mailowy',
     mapLabel: 'Mapa / zdjęcie okolicy gabinetu',

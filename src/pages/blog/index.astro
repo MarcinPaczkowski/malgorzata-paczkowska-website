@@ -13,7 +13,7 @@ const posts = getSortedPosts(await getCollection('blog'));
     <div class="px-6 py-16 sm:px-14">
       <p class="kicker mb-5">{b.kicker}</p>
       <h1 class="mb-4 max-w-[18ch] text-[36px] leading-[1.06] tracking-[-0.03em] sm:text-[48px]">{b.h1}</h1>
-      <p class="muted max-w-[60ch] text-base">{b.lead}</p>
+      <p class="muted max-w-[60ch] whitespace-pre-line text-base">{b.lead}</p>
     </div>
   </section>
 
